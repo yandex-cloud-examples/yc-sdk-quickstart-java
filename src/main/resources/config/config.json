@@ -1,0 +1,32 @@
+{
+    "folder_id": "<идентификатор каталога>",
+    "username": "user",
+    "resources": {
+        "image": {
+            "family": "ubuntu-2204-lts",
+            "folder_family_id": "standard-images"
+        },
+        "name": "computer",
+        "resources_spec": {
+            "memory": 2147483648,
+            "cores": 2
+        },
+        "boot_disk_spec": {
+            "auto_delete": true,
+            "disk_spec": {
+                "type_id": "network-hdd",
+                "size": 10737418240
+            }
+        },
+        "zone_id": "ru-central1-d",
+        "platform_id": "standard-v3",
+        "subnet_id": "<идентификатор подсети>"
+    },
+    "metadata": {
+        "ssh-keys": "USERNAME:SSH_PUBLIC_KEY",
+        "user-data": "#cloud-config\n    datasource:\n      Ec2:\n        strict_id: false\n    users:\n      - name: USERNAME\n        sudo: 'ALL=(ALL) NOPASSWD:ALL'\n        shell: /bin/bash\n        ssh_authorized_keys:\n          - SSH_PUBLIC_KEY"
+    },
+    "labels": {
+        "yc-sdk": "yes"
+    }
+}
